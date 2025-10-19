@@ -103,7 +103,7 @@
 </div>
 
 <div class="cats" id="cats">
-    <!-- Replace these URLs with your own cat images -->
+
     <img src="cat_flowers1.jpg" alt="Cat 1">
     <img src="cat_flower2.png" alt="Cat 2">
     <img src="cat_flower3.png" alt="Cat 3">
@@ -134,15 +134,15 @@
         noBtn.style.display = "none";
         cats.style.display = "flex";
 
-        // Highlight cats one by one with delay
         const images = cats.querySelectorAll('img');
         images.forEach((img, index) => {
             setTimeout(() => {
                 img.classList.add('highlight');
-            }, index * 500); // delay each cat’s glow
+            }, index * 500);
         });
     });
 </script>
 
 </body>
 </html>
+
