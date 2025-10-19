@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sup Happy!</title>
+<title>For Mariella</title>
 <style>
     body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -55,34 +55,65 @@
         transform: scale(1.1);
     }
 
-    #flower {
+    /* Cat image section */
+    .cats {
         display: none;
-        width: 250px;
-        margin-top: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
         animation: fadeIn 1s ease-in-out forwards;
     }
 
+    .cats img {
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+        object-fit: cover;
+        opacity: 0;
+        transition: all 0.8s ease;
+        transform: scale(0.9);
+    }
+
+    .cats img.highlight {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.8);
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { box-shadow: 0 0 10px 4px rgba(255, 192, 203, 0.8); }
+        to { box-shadow: 0 0 25px 10px rgba(255, 105, 180, 1); }
+    }
+
     @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.8); }
-        to { opacity: 1; transform: scale(1); }
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 </style>
 </head>
 <body>
 
-<h1>Do you trust me Mariella?</h1>
+<h1>Do you trust me happy?</h1>
 
 <div class="buttons">
     <button id="yes">Yes</button>
     <button id="no">No</button>
 </div>
 
-<img id="flower" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3J6YWYxZDhxbXVwc3YxdzZoajRwMXpxbzZua2l0YzR4dWs1cjZ4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cjnokdfhItBch5cVjW/giphy.gif" alt="Flower Gif">
+<div class="cats" id="cats">
+    <!-- Replace these URLs with your own cat images -->
+    <img src="cat_flowers1.jpg" alt="Cat 1">
+    <img src="cat_flower2.png" alt="Cat 2">
+    <img src="cat_flower3.png" alt="Cat 3">
+    <img src="cat_flowers.png" alt="Cat 4">
+</div>
 
 <script>
     const yesBtn = document.getElementById('yes');
     const noBtn = document.getElementById('no');
-    const flower = document.getElementById('flower');
+    const cats = document.getElementById('cats');
     let yesSize = 1;
 
     noBtn.addEventListener('click', () => {
@@ -98,13 +129,20 @@
     });
 
     yesBtn.addEventListener('click', () => {
-        document.querySelector('h1').textContent = "Here's for you Happy.";
+        document.querySelector('h1').textContent = "Here's something for you happy!";
         yesBtn.style.display = "none";
         noBtn.style.display = "none";
-        flower.style.display = "block";
+        cats.style.display = "flex";
+
+        // Highlight cats one by one with delay
+        const images = cats.querySelectorAll('img');
+        images.forEach((img, index) => {
+            setTimeout(() => {
+                img.classList.add('highlight');
+            }, index * 500); // delay each cat’s glow
+        });
     });
 </script>
 
 </body>
 </html>
-
